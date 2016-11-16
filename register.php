@@ -44,6 +44,8 @@ if(isset($_POST['submit-form']))
 
         //log them in
         $userTools->login($username, $password);
+        //redirect them to a welcome page
+        header("Location: welcome.php");
     }
 }
 ?>
