@@ -32,6 +32,13 @@ class UserTools
         unset($_SESSION['logged_in']);
         session_destroy();
     }
+
+    public function get($id)
+    {
+        $db = new DB();
+        $db->connect();
+        return new User($db->select('users', "`id` = $id"));
+    }
 }
 
 ?>

@@ -19,6 +19,11 @@ class DB
         $this->dbPassword = "test123";
     }
 
+    function __destruct()
+    {
+        $this->closeConnection();
+    }
+
     public function connect()
     {
         // Tratar exception
@@ -82,7 +87,7 @@ class DB
 
         $sql = "INSERT INTO `$table` ($colums) VALUES ($values)";
         echo "$sql ";
-        
+
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
     }
