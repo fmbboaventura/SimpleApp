@@ -37,10 +37,10 @@ class UserTools
     {
         $db = new DB();
         $db->connect();
-        return new User($db->select('users', "`id` = $id"));
+        return new User($db->select('users', "`id` = '$id'"));
     }
 
-    public function checkUsernameAlreadyExists($username)
+    public function checkUsernameExists($username)
     {
         $db = new DB();
         $db->connect();

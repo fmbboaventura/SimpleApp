@@ -6,11 +6,11 @@ require_once 'DB.class.php';
 
 class User
 {
-    private $id;
-    private $username;
-    private $hashedPassword;
-    private $email;
-    private $joinDate;
+    public $id;
+    public $username;
+    public $hashedPassword;
+    public $email;
+    public $joinDate;
 
     //Constructor is called whenever a new object is created.
     //Takes an associative array with the DB row as an argument.
