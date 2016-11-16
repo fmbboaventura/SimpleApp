@@ -39,6 +39,15 @@ class UserTools
         $db->connect();
         return new User($db->select('users', "`id` = $id"));
     }
+
+    public function checkUsernameAlreadyExists($username)
+    {
+        $db = new DB();
+        $db->connect();
+        $result = $db->select('users', "`username` = '$username'");
+
+        return (count($result) == 1);
+    }
 }
 
 ?>
