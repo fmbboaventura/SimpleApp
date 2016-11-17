@@ -1,37 +1,19 @@
-<?php session_start(); ?>
+<?php require_once 'includes/global.inc.php'; ?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Simple App</title>
+        <title>Pagina Inicial</title>
     </head>
     <body>
-        <?php
-            require 'classes/DB.class.php';
-            require 'classes/User.class.php';
-            require 'classes/UserTools.class.php';
-            $db = new DB();
-            try {
-                $db->connect();
-                $user = new User(array(
-                    "username" => "br", "password" =>
-                    "br123", "email" => "br@mail.com",
-                    "join_date" => date("Y-m-d H:i:s")));
-                //$user->save(true);
-                $tools = new UserTools();
-                $tools->login("br", "br123");
-                //$db->update(array("email" => "hu3@mail.com.br"), "users", "`username` = 'hu3'");
-                //$db->delete("users", "`username` = 'br'");
-                $array = $db->select("users");
-                foreach ($array as $row) {
-                    print_r($row);
-                }
-                $db->closeConnection();
-                print_r($_SESSION);
-            } catch(PDOException $e)
-            {
-                echo "Caiu na exception: " . $e->getMessage();
-            }
-        ?>
+        <?php if(isset($_SESSION['logged_in'])) : ?>
+        <?php $user = unserialize($_SESSION['user']); ?>
+            Olá, <?php echo $user->username; ?>. Você fez login.
+            <!-- <a href="logout.php">Logout</a> | <a href="settings.php">Change Email</a> -->
+        <?php else : ?>
+            Você não fez login.
+            <a href="login.php">Log In</a> | <a href="register.php">Cadastro</a>
+        <?php endif; ?>
     </body>
 </html>
