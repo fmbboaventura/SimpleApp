@@ -20,8 +20,8 @@ $user = unserialize($_SESSION['user']);
     <body>
         Olá, <?php echo $user->username; ?>.
         Você foi cadastrado e sua sessão foi iniciada. Bem vindo!
-        <!-- <a href="logout.php">Log Out</a> |
-        <a href="index.php">Return to Homepage</a> -->
+        <a href="logout.php">Log Out</a> |
+        <a href="index.php">Voltar a Homepage</a>
 
     </body>
 </html>

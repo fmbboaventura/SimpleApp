@@ -16,7 +16,8 @@ class UserTools
 
         if (count($result) == 1)
         {
-            $_SESSION["user"] = serialize(new User($result));
+            $usr = new User($result[0]);
+            $_SESSION["user"] = serialize($usr);
             $_SESSION["login_time"] = time();
             $_SESSION["logged_in"] = 1;
             return true;
@@ -37,7 +38,7 @@ class UserTools
     {
         $db = new DB();
         $db->connect();
-        return new User($db->select('users', "`id` = '$id'"));
+        return new User($db->select('users', "`id` = '$id'")[0]);
     }
 
     public function checkUsernameExists($username)

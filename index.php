@@ -8,9 +8,9 @@
     </head>
     <body>
         <?php if(isset($_SESSION['logged_in'])) : ?>
-        <?php $user = unserialize($_SESSION['user']); ?>
+        <?php $user = unserialize($_SESSION['user']);?>
             Olá, <?php echo $user->username; ?>. Você fez login.
-            <!-- <a href="logout.php">Logout</a> | <a href="settings.php">Change Email</a> -->
+            <a href="logout.php">Logout</a> | <a href="settings.php">Mudar Email</a>
         <?php else : ?>
             Você não fez login.
             <a href="login.php">Log In</a> | <a href="register.php">Cadastro</a>

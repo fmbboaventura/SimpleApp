@@ -5,7 +5,7 @@ $error = "";
 $username = "";
 $password = "";
 
-if (isset($__POST['submit-login'])) {
+if (isset($_POST['submit-login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
